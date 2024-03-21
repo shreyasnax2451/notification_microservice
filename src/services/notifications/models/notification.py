@@ -10,11 +10,9 @@ class BaseModel(Model):
 
 class Notification(BaseModel):
     id = UUIDField(constraints=[SQL("DEFAULT gen_random_uuid()")], index=True, primary_key = True)
-    notification_data = BinaryJSONField(null=True, index=True)
+    notification_data = BinaryJSONField(null=True)
     user_id = UUIDField(index = True)
-    # order_id: int
-    # customer_email: str
-    # items: list
+    notification_template_id = UUIDField(index = True)
 
     def save(self, *args, **kwargs):
         self.updated_at = datetime.datetime.now()

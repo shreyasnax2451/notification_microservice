@@ -31,9 +31,7 @@ def delete_notification_template_api(request: DeleteNotificationTemplate):
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
 
 @notification_template_router.post("/update_notification_template")
-def update_notification_template_api(
-    request: UpdateNotificationTemplate
-):
+def update_notification_template_api(request: UpdateNotificationTemplate):
     try:
         data = update_notification_template(request.dict())
         return JSONResponse(status_code=200, content=json_encoder(data))
@@ -44,14 +42,14 @@ def update_notification_template_api(
 
 @notification_template_router.get("/get_notification_template")
 def get_notification_template_api(
-    type: str = None,
-    name: str = None,
+    template_type: str = None,
+    template_name: str = None,
     status: str = None,
 ):
     try:
         request = {
-            'type':type,
-            'name':name,
+            'template_type':template_type,
+            'template_name':template_name,
             'status':status
         }
         data = get_notification_template(request)

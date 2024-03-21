@@ -1,18 +1,17 @@
 from pydantic import BaseModel
 
 class CreateNotificationTemplate(BaseModel):
-  type: str
-  name: str
-  variables: list[str] = []
-  subject: str
-  content: str = None
-  html_template: str = None
+  template_type: str
+  template_name: str
+  template_variables: list[str] = []
+  subject: str = None
+  message_template: str = None
 
 class UpdateNotificationTemplate(BaseModel):
   id: str
-  name: str = None
+  template_name: str = None
   subject: str = None
-  html_template: str = None
+  message_template: str = None
 
 class DeleteNotificationTemplate(BaseModel):
   id: str
