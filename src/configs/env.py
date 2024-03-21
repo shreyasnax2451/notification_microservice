@@ -18,3 +18,5 @@ AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 SENDER = os.getenv('SENDER')
 CHARSET = os.getenv('CHARSET')
 AWS_REGION = os.getenv('AWS_REGION')
+
+CELERY_REDIS_URL = os.getenv('CELERY_REDIS_URL')
