@@ -13,6 +13,7 @@ class Notification(BaseModel):
     notification_data = BinaryJSONField(null=True)
     user_id = UUIDField(index = True)
     notification_template_id = UUIDField(index = True)
+    created_at = DateTimeField(default=datetime.datetime.now)
 
     def save(self, *args, **kwargs):
         self.updated_at = datetime.datetime.now()

@@ -11,6 +11,7 @@ class UpdateNotificationTemplate(BaseModel):
   id: str
   template_name: str = None
   subject: str = None
+  template_variables: list[str] = []
   message_template: str = None
 
 class DeleteNotificationTemplate(BaseModel):

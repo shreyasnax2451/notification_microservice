@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 
 notification_router = APIRouter()
 
-@notification_router.post("/send_notication")
+@notification_router.post("/send_notification")
 def send_notification_api(request: SendNotification):
     try:
         data = send_notification(request.dict())

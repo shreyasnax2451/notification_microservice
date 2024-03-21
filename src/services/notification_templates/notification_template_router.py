@@ -15,7 +15,7 @@ def create_notification_template_api(request: CreateNotificationTemplate):
     try:
         create_template = create_notification_template(request.dict())
         return JSONResponse(status_code=200,content=json_encoder(create_template))
-    except HTTPException as e :
+    except HTTPException as e:
         raise
     except Exception as e:
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
@@ -25,7 +25,7 @@ def delete_notification_template_api(request: DeleteNotificationTemplate):
     try:
         delete_template = delete_notification_template(request.dict())
         return JSONResponse(status_code=200,content=json_encoder(delete_template))
-    except HTTPException as e :
+    except HTTPException as e:
         raise
     except Exception as e:
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
