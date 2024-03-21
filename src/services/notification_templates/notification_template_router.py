@@ -1,12 +1,13 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from services.notification_templates.notification_template_params import *
 from libs.json_encoder import json_encoder
-
+# from utils.auth import authorize_token
 from services.notification_templates.interaction.create_notification_template import create_notification_template
 from services.notification_templates.interaction.get_notification_template import get_notification_template
 from services.notification_templates.interaction.update_notification_template import update_notification_template
 from services.notification_templates.interaction.delete_notification_template import delete_notification_template
+from logger import logging
 
 notification_template_router = APIRouter()
 
@@ -18,6 +19,7 @@ def create_notification_template_api(request: CreateNotificationTemplate):
     except HTTPException as e:
         raise
     except Exception as e:
+        logging.info(e)
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
 
 @notification_template_router.post('/delete_notification_template')
@@ -28,6 +30,7 @@ def delete_notification_template_api(request: DeleteNotificationTemplate):
     except HTTPException as e:
         raise
     except Exception as e:
+        logging.info(e)
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
 
 @notification_template_router.post("/update_notification_template")
@@ -38,13 +41,14 @@ def update_notification_template_api(request: UpdateNotificationTemplate):
     except HTTPException as e:
         raise
     except Exception as e:
+        logging.info(e)
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
 
 @notification_template_router.get("/get_notification_template")
 def get_notification_template_api(
     template_type: str = None,
     template_name: str = None,
-    status: str = None,
+    status: str = None
 ):
     try:
         request = {
@@ -57,4 +61,5 @@ def get_notification_template_api(
     except HTTPException as e:
         raise
     except Exception as e:
+        logging.info(e)
         return JSONResponse(status_code=500, content={ "success": False, 'error': str(e) })
