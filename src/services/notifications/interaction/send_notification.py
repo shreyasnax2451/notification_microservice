@@ -1,5 +1,4 @@
 from configs.env import *
-# from fastapi.templating import Jinja2Templates
 import smtplib
 from fastapi import HTTPException
 from database.db_session import db
