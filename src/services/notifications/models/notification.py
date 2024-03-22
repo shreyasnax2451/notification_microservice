@@ -16,7 +16,7 @@ class Notification(BaseModel):
     created_at = DateTimeField(default=datetime.datetime.now)
 
     def save(self, *args, **kwargs):
-        self.updated_at = datetime.datetime.now()
+        self.created_at = datetime.datetime.now()
         return super(Notification, self).save(*args, **kwargs)
 
     class Meta:

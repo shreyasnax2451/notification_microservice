@@ -2,7 +2,6 @@ from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import JSONResponse
 from services.notification_templates.notification_template_params import *
 from libs.json_encoder import json_encoder
-# from utils.auth import authorize_token
 from services.notification_templates.interaction.create_notification_template import create_notification_template
 from services.notification_templates.interaction.get_notification_template import get_notification_template
 from services.notification_templates.interaction.update_notification_template import update_notification_template
