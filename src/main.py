@@ -4,9 +4,7 @@ from database.db_session import db
 from services.notifications.notification_router import notification_router
 from services.notification_templates.notification_template_router import notification_template_router
 from database.db_support import get_db
-from database.create_tables import create_tables
-from services.notifications.models.notification import Notification
-from services.notification_templates.models.notification_template import NotificationTemplate
+
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -34,6 +32,3 @@ def startup():
 def shutdown():
     if not db.is_closed():
         db.close()
-
-# if __name__ == "__main__":
-#     create_tables([Notification, NotificationTemplate])
